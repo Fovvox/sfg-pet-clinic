@@ -3,6 +3,7 @@ package fowox.spring.sfgpetclinic.model;
 import java.util.Set;
 
 public class Owner extends Pearson{
+
     private String address;
     private String city;
     private String telephone;
