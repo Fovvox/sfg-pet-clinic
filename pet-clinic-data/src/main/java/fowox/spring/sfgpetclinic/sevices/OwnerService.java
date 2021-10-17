@@ -1,4 +1,4 @@
-package fowox.spring.sfgpetclinic.model.sevices;
+package fowox.spring.sfgpetclinic.sevices;
 
 import fowox.spring.sfgpetclinic.model.Owner;
 
