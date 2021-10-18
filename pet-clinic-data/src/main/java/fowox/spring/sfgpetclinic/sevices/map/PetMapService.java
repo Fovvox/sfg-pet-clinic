@@ -1,0 +1,33 @@
+package fowox.spring.sfgpetclinic.sevices.map;
+
+import fowox.spring.sfgpetclinic.model.Pet;
+import fowox.spring.sfgpetclinic.sevices.PetService;
+
+import java.util.Set;
+
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
+    @Override
+    public Set<Pet> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public Pet findByID(Long aLong) {
+        return super.findByID(aLong);
+    }
+
+    @Override
+    public <S extends Pet> S save(S entity) {
+        return super.save(entity);
+    }
+
+    @Override
+    public void delete(Pet entity) {
+        super.delete(entity);
+    }
+
+    @Override
+    public void deleteByID(Long aLong) {
+        super.deleteByID(aLong);
+    }
+}
