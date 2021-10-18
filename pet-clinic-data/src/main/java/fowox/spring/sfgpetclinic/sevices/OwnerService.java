@@ -2,15 +2,7 @@ package fowox.spring.sfgpetclinic.sevices;
 
 import fowox.spring.sfgpetclinic.model.Owner;
 
-import java.util.Set;
-
-public interface OwnerService {
-
-    Owner findByID(Long id);
-
-    void save (Owner owner);
-
-    Set<Owner> findAll();
+public interface OwnerService extends GenericService<Owner, Long>{
 
     Owner findByLastName(String lastName);
 
