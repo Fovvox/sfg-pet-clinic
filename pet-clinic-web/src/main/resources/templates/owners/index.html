@@ -9,6 +9,23 @@
     </head>
     <body>
         <h1 th:text="'List of owners'">List of owners...</h1>
-
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Telephone</th>
+            </tr>
+            <tr th:each="owner : ${owners}">
+                <td th:text="${owner.id}">1</td>
+                <td th:text="${owner.firstName}">John</td>
+                <td th:text="${owner.lastName}">Doe</td>
+                <td th:text="${owner.address}">123 Brickerel</td>
+                <td th:text="${owner.city}">Miami</td>
+                <td th:text="${owner.telephone}">14785236987</td>
+            </tr>
+        </table>
     </body>
 </html>
