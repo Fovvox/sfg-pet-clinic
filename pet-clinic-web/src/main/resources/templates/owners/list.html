@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -8,20 +8,16 @@
         <title>List of owners</title>
     </head>
     <body>
-        <h1 th:text="'List of owners'">List of owners...</h1>
-        <table>
+        <h2 th:text="'List of owners'">List of owners...</h2>
+        <table class="table table-striped">
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Address</th>
+                <th style="width: 150px;">Name</th>
+                <th style="width: 200px;">Address</th>
                 <th>City</th>
-                <th>Telephone</th>
+                <th style="width: 120px">Telephone</th>
             </tr>
             <tr th:each="owner : ${owners}">
-                <td th:text="${owner.id}">1</td>
-                <td th:text="${owner.firstName}">John</td>
-                <td th:text="${owner.lastName}">Doe</td>
+                <td th:text="${owner.firstName + ' ' + owner.lastName}">John Doe</td>
                 <td th:text="${owner.address}">123 Brickerel</td>
                 <td th:text="${owner.city}">Miami</td>
                 <td th:text="${owner.telephone}">14785236987</td>
