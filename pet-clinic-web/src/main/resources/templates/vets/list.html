@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -8,18 +8,16 @@
         <title>List of vets</title>
     </head>
     <body>
-        <h1 th:text="'List of vets'">List of vets...</h1>
+        <h1>List of vets...</h1>
 
-        <table>
+        <table class="table table-striped">
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
+                <th>Name</th>
+                <th>Specialties</th>
             </tr>
             <tr th:each="vet : ${vets}">
-                <td th:text="${vet.id}">1</td>
-                <td th:text="${vet.firstName}">John</td>
-                <td th:text="${vet.lastName}">Doe</td>
+                <td th:text="${vet.firstName + ' ' + vet.lastName}">John Doe</td>
+                <td>a</td>
             </tr>
         </table>
     </body>
