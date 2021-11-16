@@ -33,4 +33,12 @@ public class Owner extends Pearson{
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+    public Set<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
 }

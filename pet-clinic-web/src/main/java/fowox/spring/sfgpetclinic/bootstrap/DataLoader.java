@@ -1,6 +1,7 @@
 package fowox.spring.sfgpetclinic.bootstrap;
 
 import fowox.spring.sfgpetclinic.model.Owner;
+import fowox.spring.sfgpetclinic.model.Pet;
 import fowox.spring.sfgpetclinic.model.PetType;
 import fowox.spring.sfgpetclinic.model.Vet;
 import fowox.spring.sfgpetclinic.sevices.OwnerService;
@@ -8,6 +9,8 @@ import fowox.spring.sfgpetclinic.sevices.PetTypeService;
 import fowox.spring.sfgpetclinic.sevices.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -25,21 +28,13 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         PetType dog = new PetType();
         dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
 
         PetType cat = new PetType();
         cat.setName("Cat");
-
-        PetType bird = new PetType();
-        bird.setName("Bird");
-
-
-        PetType savedDogPetType = petTypeService.save(dog);
         PetType savedCatPetType = petTypeService.save(cat);
-        PetType savedBirdPetType = petTypeService.save(bird);
-
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
@@ -48,6 +43,15 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Miami");
         owner1.setTelephone("1231231234");
 
+        Pet mikesPet = new Pet();
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner1);
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setName("Rosco");
+        owner1.getPets().add(mikesPet);
+
+        ownerService.save(owner1);
+
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
@@ -55,22 +59,30 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("Miami");
         owner2.setTelephone("1231231234");
 
-        ownerService.save(owner1);
+        Pet fionasCat = new Pet();
+        fionasCat.setName("Just Cat");
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setPetType(savedCatPetType);
+        owner2.getPets().add(fionasCat);
+
         ownerService.save(owner2);
 
-        System.out.println("Loaded owners...");
+
+        System.out.println("Loaded Owners....");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
 
+        vetService.save(vet1);
+
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
 
-        vetService.save(vet1);
         vetService.save(vet2);
 
-        System.out.println("loaded vets...");
+        System.out.println("Loaded Vets....");
     }
 }
