@@ -2,11 +2,13 @@ package fowox.spring.sfgpetclinic.sevices.map;
 
 import fowox.spring.sfgpetclinic.model.Owner;
 import fowox.spring.sfgpetclinic.sevices.OwnerService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class OwnerMapService extends AbstractMapService<Owner, Long>  implements OwnerService {
 
     @Override

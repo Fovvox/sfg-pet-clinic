@@ -2,11 +2,13 @@ package fowox.spring.sfgpetclinic.sevices.map;
 
 import fowox.spring.sfgpetclinic.model.Vet;
 import fowox.spring.sfgpetclinic.sevices.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile("map")
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
