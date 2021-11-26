@@ -1,22 +1,22 @@
 package fowox.spring.sfgpetclinic.model;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
 @Table(name = "owners")
-public class Owner extends Pearson{
+public class Owner extends Pearson {
 
     @Column(name = "address")
     private String address;
@@ -30,6 +30,25 @@ public class Owner extends Pearson{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     @ToString.Exclude
     private Set<Pet> pets;
+
+    public Owner() {
+        pets = new HashSet<>();
+    }
+
+    @Builder
+    public Owner(Long id, String firstName, String lastName, String address, String city,
+                 String telephone, Set<Pet> pets) {
+        super(id, firstName, lastName);
+        this.address = address;
+        this.city = city;
+        this.telephone = telephone;
+
+        if (pets != null) {
+            this.pets = pets;
+        } else if (this.pets == null) {
+            pets = new HashSet<>();
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

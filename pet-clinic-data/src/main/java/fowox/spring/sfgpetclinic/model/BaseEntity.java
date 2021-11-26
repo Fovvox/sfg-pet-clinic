@@ -18,11 +18,15 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @MappedSuperclass
-public class BaseEntity implements java.io.Serializable{
+public class BaseEntity implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public BaseEntity(Long id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {

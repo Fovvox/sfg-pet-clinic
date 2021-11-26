@@ -24,6 +24,12 @@ public class Pearson extends BaseEntity{
     @Column(name = "last_name")
     private String lastName;
 
+    public Pearson(Long id, String firstName, String lastName) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

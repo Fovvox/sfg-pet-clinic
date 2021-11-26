@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-@Profile("map")
+@Profile({"map", "default"})
 public class OwnerMapService extends AbstractMapService<Owner, Long>  implements OwnerService {
 
     @Override
@@ -39,7 +39,7 @@ public class OwnerMapService extends AbstractMapService<Owner, Long>  implements
     @Override
     public Owner findByLastName(String lastName) {
         return findAll().stream()
-                .filter(owner -> owner.getLastName().equals(lastName))
+                .filter(owner -> owner.getLastName() != null && owner.getLastName().equalsIgnoreCase(lastName))
                 .findFirst()
                 .orElse(null);
     }
